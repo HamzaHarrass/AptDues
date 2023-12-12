@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
-const url ="mongodb+srv://hamzagames080:JypCaNOQkMvGOOkE@cluster0.ezvyfwo.mongodb.net/AptDues?retryWrites=true&w=majority";
+const url ="mongodb+srv://hamzaharrass05:pZE0PpqHndvouOsL@cluster0.o4hwrvz.mongodb.net/?retryWrites=true&w=majority";
 function connection (){
-    mongoose.connect(url).then(()=>{
+    mongoose.connect(url, {
+        dbName: "AptDues"
+    }).then(()=>{
         console.log(" db connection success");
-    }).catch(()=>{
-        console.log(" db connection failed");
+    }).catch((error)=>{
+        console.log(error);
     });
+    
 }
 
 module.exports = connection; 
