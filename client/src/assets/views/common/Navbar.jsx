@@ -1,24 +1,28 @@
 import '../../styles/style.css'
 import '../../styles/bootstrap.min.css'
-import '../../styles/nice-select.min.css'
-import '../../styles/owl.carousel.min.css'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo-icon-black.png'
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+const Navbar = () => {
+  const location = useLocation();
+  const [url,setUrl] = useState(location.pathname);
 
-const navbar = () => {
-
+  useEffect(()=>{
+    
+  },[])
   return (
       <nav className="navbar navbar-expand-lg  header_navbar">
         <a className="navbar-brand" href="">
           <img src={logo} alt=""/>
           <span>
-          AptDues
+          Apt<span className='Dues' >Dues</span>
           </span>
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className=""> </span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        {url != '/auth' && <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto align-items-center">
             <li className="nav-item active">
               <a className="nav-link" href="">Home <span className="sr-only"></span></a>
@@ -41,9 +45,9 @@ const navbar = () => {
               </svg>
             </a>
           </div>
-        </div>
+        </div>}
       </nav>
   )
 }
 
-export default navbar
+export default  Navbar

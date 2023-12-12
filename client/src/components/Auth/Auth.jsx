@@ -1,7 +1,11 @@
 import '../../assets/styles/AuthStyle.css'
+import Navbar from '../../assets/views/common/Navbar'
+
 const Auth = () => {
   return (
-    <div className="container">
+	<>
+	<Navbar></Navbar>
+    <div className="container-auth">
 	<div className="screen">
 		<div className="screen__content">
 			<form className="login">
@@ -35,6 +39,7 @@ const Auth = () => {
 		</div>		
 	</div>
 </div>
+</>
   )
 }
 
