@@ -1,6 +1,5 @@
 const Facture = require('../models/Facture');
 
-// Create a new facture
 const createFacture = async (req, res) => {
   try {
     const facture = new Facture(req.body);
@@ -11,7 +10,6 @@ const createFacture = async (req, res) => {
   }
 };
 
-// Get all factures
 const getAllFactures = async (req, res) => {
   try {
     const factures = await Facture.find().populate('appartement client');
@@ -21,7 +19,6 @@ const getAllFactures = async (req, res) => {
   }
 };
 
-// Get a specific facture by ID
 const getFactureById = async (req, res) => {
   try {
     const facture = await Facture.findById(req.params.id).populate('appartement client');
@@ -34,7 +31,6 @@ const getFactureById = async (req, res) => {
   }
 };
 
-// Update a specific facture by ID
 const updateFacture = async (req, res) => {
   try {
     const facture = await Facture.findByIdAndUpdate(
@@ -51,7 +47,6 @@ const updateFacture = async (req, res) => {
   }
 };
 
-// Delete a specific facture by ID
 const deleteFacture = async (req, res) => {
   try {
     const facture = await Facture.findByIdAndDelete(req.params.id).populate('appartement client');

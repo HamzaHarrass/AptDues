@@ -1,7 +1,5 @@
-// controllers/appartementController.js
 const Appartement = require('../models/Appartement');
 
-// Create a new apartment
 const createAppartement = async (req, res) => {
   try {
     const appartement = new Appartement(req.body);
@@ -12,7 +10,6 @@ const createAppartement = async (req, res) => {
   }
 };
 
-// Get all apartments
 const getAllAppartements = async (req, res) => {
   try {
     const appartements = await Appartement.find();
@@ -22,7 +19,6 @@ const getAllAppartements = async (req, res) => {
   }
 };
 
-// Get a specific apartment by ID
 const getAppartementById = async (req, res) => {
   try {
     const appartement = await Appartement.findById(req.params.id);
@@ -35,7 +31,6 @@ const getAppartementById = async (req, res) => {
   }
 };
 
-// Update a specific apartment by ID
 const updateAppartement = async (req, res) => {
   try {
     const appartement = await Appartement.findByIdAndUpdate(
@@ -52,7 +47,6 @@ const updateAppartement = async (req, res) => {
   }
 };
 
-// Delete a specific apartment by ID
 const deleteAppartement = async (req, res) => {
   try {
     const appartement = await Appartement.findByIdAndDelete(req.params.id);
