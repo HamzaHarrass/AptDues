@@ -2,6 +2,7 @@ const express = require("express");
 require("./config/DBconnection")()
 const app = express();
 const authRouter = require("./routes/authRouter");
+const appartementRoutes = require('./routes/appartementRouter');
 const cors = require('cors');
 
 
@@ -16,6 +17,9 @@ app.get('/',(req,res)=>{
 })
 app.use("/auth",authRouter);
 
-app.listen(3000,()=>{
-    console.log("IS WORK ");
+app.use('/api', appartementRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
