@@ -85,7 +85,8 @@ const body = () => {
         </div>
       </div>
     </div>
-  </section>  )
+  </section> 
+   )
 }
 
 export default body
