@@ -3,7 +3,6 @@ const Client = require('../models/Client');
 // Create a new client
 const createClient = async (req, res) => {
   try {
-    console.log("body",req.body);
     const client = new Client(req.body);
     await client.save();
     res.status(201).json(client);
@@ -12,7 +11,6 @@ const createClient = async (req, res) => {
   }
 };
 
-// Get all clients
 const getAllClients = async (req, res) => {
   try {
     const clients = await Client.find();
@@ -22,7 +20,6 @@ const getAllClients = async (req, res) => {
   }
 };
 
-// Get a specific client by ID
 const getClientById = async (req, res) => {
   try {
     const client = await Client.findById(req.params.id);
@@ -35,7 +32,6 @@ const getClientById = async (req, res) => {
   }
 };
 
-// Update a specific client by ID
 const updateClient = async (req, res) => {
   try {
     const client = await Client.findByIdAndUpdate(
@@ -52,7 +48,6 @@ const updateClient = async (req, res) => {
   }
 };
 
-// Delete a specific client by ID
 const deleteClient = async (req, res) => {
   try {
     const client = await Client.findByIdAndDelete(req.params.id);
