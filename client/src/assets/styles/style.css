@@ -3291,8 +3291,7 @@ section {
 .slider_section .row{
     height: 90vh;
     width: 78.7vw;
-    margin-left: 1vw;
-    /* margin-right: 30vw; */
+    margin-left: 0.6vw;
     padding: 3em 0 3em 7em;
     border-radius: 40vh 0 0 40vh;
     background-color: #5aa9e6 !important;
