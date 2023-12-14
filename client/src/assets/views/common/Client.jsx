@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import '../../styles/style.css';
 import '../../styles/bootstrap.min.css';
 import utilisateur from '../../images/utilisateur.png';
@@ -5,7 +6,54 @@ import telephone from '../../images/telephone_159832.png';
 import CIN from '../../images/id-card.png';
 
 const Client = () => {
- 
+  const [formData, setFormData] = useState({
+    nom: '',
+    prenom: '',
+    telephone: '',
+    cin: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3000/api/clients', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response);
+
+      if (response.ok) {
+        try {
+          const data = await response.json();
+          console.log('Client added successfully:', data);
+        } catch (jsonError) {
+          console.error('Error parsing JSON:', jsonError.message);
+        }
+      } else {
+        try {
+          const errorData = await response.json();
+          console.error('Failed to add client:', errorData.error);
+        } catch (jsonError) {
+          console.error('Error parsing JSON:', jsonError.message);
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
+
   return (
     <section className="find_section layout_padding">
       <div className="container">
@@ -19,8 +67,7 @@ const Client = () => {
           <div className="tab-content text-center">
             <div className="tab-pane active" id="rent">
               <div className="Rent_form find_form">
-                
-                <form onSubmit={''}>
+                <form onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="col-md-6 px-0">
                       <div className="form-group ">
@@ -33,8 +80,10 @@ const Client = () => {
                           <input
                             type="text"
                             className="form-control"
-                            id="address"
-                            value={'Entre votre nom'}
+                            id="nom"
+                            placeholder="Enter your name"
+                            value={formData.nom}
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
@@ -50,8 +99,10 @@ const Client = () => {
                           <input
                             type="text"
                             className="form-control"
-                            id="prix"
-                            value={'Entre votre prenom'}
+                            id="prenom"
+                            placeholder="Enter your surname"
+                            value={formData.prenom}
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
@@ -69,10 +120,10 @@ const Client = () => {
                           <input
                             type="text"
                             className="form-control"
-                            id="room"
-                            placeholder="Room"
-                            value={'Entre votre telephone'}
-                            onChange={'handleChange'}
+                            id="telephone"
+                            placeholder="Enter your telephone"
+                            value={formData.telephone}
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
@@ -88,10 +139,10 @@ const Client = () => {
                           <input
                             type="text"
                             className="form-control"
-                            id="room"
-                            placeholder="Room"
-                            value={'Entre votre CIN'}
-                            onChange={'handleChange'}
+                            id="cin"
+                            placeholder="Enter your CIN"
+                            value={formData.cin}
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
@@ -99,7 +150,7 @@ const Client = () => {
                   </div>
                   <div className="btn-box">
                     <button type="submit">
-                      <span>Find Now</span>
+                      <span>Submit</span>
                     </button>
                   </div>
                 </form>
