@@ -5,7 +5,7 @@ const app = express();
 const authRouter = require("./routes/authRouter");
 const appartementRoutes = require('./routes/appartementRouter');
 const clientRouter = require('./routes/clientRouter');
-const factureRouter = require('./routes/factureRouter');
+const paiementRouter = require('./routes/paiementRouter');
 
 const cors = require('cors');
 
@@ -24,7 +24,7 @@ app.use("/auth",authRouter);
 
 app.use('/api', appartementRoutes);
 app.use('/api', clientRouter);
-app.use('/api', factureRouter);
+app.use('/api', paiementRouter);
 
 
 const PORT = process.env.PORT || 3000;

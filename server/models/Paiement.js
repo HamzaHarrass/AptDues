@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const factureSchema = Schema({
+const PaiementSchema = Schema({
   appartement: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Appartement',
@@ -18,6 +18,6 @@ const factureSchema = Schema({
     },
 });
 
-const Facture = mongoose.model('Facture', factureSchema);
+const Paiement  = mongoose.model('Facture', PaiementSchema);
 
-module.exports = Facture;
+module.exports = Paiement ;
