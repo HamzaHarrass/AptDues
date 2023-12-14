@@ -920,6 +920,7 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* background-image: none; */
 }
 
 .find_section .form_tab_container ul {
@@ -3293,8 +3294,14 @@ section {
 .slider_section .row{
     height: 90vh;
     width: 78.7vw;
-    margin-left: 0.6vw;
+    margin-left: 1.4vw;
     padding: 3em 0 3em 7em;
     border-radius: 40vh 0 0 40vh;
     background-color: #5aa9e6 !important;
+}
+.centre{
+  margin-left: 10vw;
+}
+.centre-Nav{
+  margin-left: 10vw;
 }

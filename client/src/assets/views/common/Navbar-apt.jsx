@@ -2,7 +2,7 @@ import '../../styles/style.css'
 import '../../styles/bootstrap.min.css'
 import '../../styles/responsive.css'
 import logo from '../../images/logo-icon-black.png'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation ,useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
     
   },[])
   return (
-      <nav className="navbarcentre navbar navbar-expand-lg  header_navbar">
+      <nav className="centre-Nav navbarcentre navbar navbar-expand-lg  header_navbar">
         <a className="navbar-brand" href="">
           <img src={logo} alt=""/>
           <span>
@@ -29,7 +29,7 @@ const Navbar = () => {
         {url != '/auth' && <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto align-items-center">
             <li className="nav-item active">
-              <a  onClick={() => navigate("/")} className="nav-link" href="">Home <span className="sr-only"></span></a>
+              <a  onClick={() => navigate("/")}  className="nav-link" href="">Home <span className="sr-only"></span></a>
             </li>
             <li className="nav-item">
               <a onClick={() => navigate("/appartement")} className="nav-link" href=""> appartement </a>
