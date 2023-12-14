@@ -529,7 +529,7 @@ section {
 }
 
 .header_navbar #navbarSupportedContent .nav-link:hover {
-  color: #f83319;
+  color: #5aa9e6;
 }
 
 .header_navbar #navbarSupportedContent .custom_dropdown {
@@ -569,7 +569,7 @@ section {
 }
 
 .header_navbar #navbarSupportedContent .custom_dropdown-menu .dropdown-item:hover {
-  color: #f83319;
+  color: #5aa9e6;
   background-color: transparent;
 }
 
@@ -592,7 +592,7 @@ section {
 }
 
 .header_navbar #navbarSupportedContent .user_option a:hover svg {
-  fill: #f83319;
+  fill: #5aa9e6;
 }
 
 .header_navbar #navbarSupportedContent .user_option .user_login_link {
@@ -739,7 +739,7 @@ section {
   padding: 10px 5px 10px 45px;
   border-radius: 35px;
   color: #000000;
-  background-color: #ffe45e;
+  background-color: #ffffff;
   text-transform: uppercase;
   font-size: 15px;
   margin-top: 45px;
@@ -1259,6 +1259,7 @@ section {
 .property_section .box .detail-box a {
   border: none;
   display: inline-block;
+  text-decoration: none;
   background-color: #5aa9e6;
   color: #ffffff;
   font-weight: 600;
@@ -1281,7 +1282,7 @@ section {
   left: 0;
   width: 0;
   height: 100%;
-  background-color: #dfe65a;
+  background-color: #5aa9e6;
   border-radius: 35px;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -1317,8 +1318,9 @@ section {
 .property_section .btn-box a {
   border: none;
   display: inline-block;
-  background-color: #ffff00;
-  color: #040404;
+  text-decoration: none;
+  background-color: #5aa9e6;
+  color: #ffffff;
   font-weight: 600;
   padding: 12px 50px;
   border-radius: 45px;
