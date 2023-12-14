@@ -13,6 +13,9 @@ const Client = () => {
     cin: '',
   });
 
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState(''); 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -37,6 +40,14 @@ const Client = () => {
       if (response.ok) {
         try {
           const data = await response.json();
+          setMessageType('success');
+          setMessage('Client added successfully');
+          setFormData({
+            nom: '',
+            prenom: '',
+            telephone: '',
+            cin: '',
+          });
           console.log('Client added successfully:', data);
         } catch (jsonError) {
           console.error('Error parsing JSON:', jsonError.message);
@@ -67,6 +78,11 @@ const Client = () => {
           <div className="tab-content text-center">
             <div className="tab-pane active" id="rent">
               <div className="Rent_form find_form">
+              {message !== '' && (
+                  <p className={`text-${messageType === 'success' ? 'success' : 'danger'}`}>
+                    {message}
+                  </p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="col-md-6 px-0">
