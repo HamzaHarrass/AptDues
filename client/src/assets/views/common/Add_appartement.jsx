@@ -7,12 +7,13 @@ import prix from '../../images/input-price.png';
 
 const Appartement = () => {
   const [formData, setFormData] = useState({
-    address: '',  
+    address: '',
     prix: '',
     room: '',
-    status : 'available',
+    status: 'available',
   });
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState(''); 
 
   const handleChange = (e) => {
     setFormData({
@@ -31,18 +32,19 @@ const Appartement = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       console.log(response);
       if (response.ok) {
         try {
           const data = await response.json();
-          setMessage('Apartment added successfully')
+          setMessageType('success');
+          setMessage('Apartment added successfully');
           setFormData({
-            address: '',  
+            address: '',
             prix: '',
             room: '',
-            status : 'available',
-          })
+            status: 'available',
+          });
           console.log('Apartment added successfully:', data);
         } catch (jsonError) {
           console.error('Error parsing JSON:', jsonError.message);
@@ -50,12 +52,15 @@ const Appartement = () => {
       } else {
         try {
           const errorData = await response.json();
-          console.error('Failed to add apartment:', errorData.error);
+          setMessageType('error');
+          setMessage(`Failed to add apartment: ${errorData.error}`);
         } catch (jsonError) {
           console.error('Error parsing JSON:', jsonError.message);
         }
       }
     } catch (error) {
+      setMessageType('error');
+      setMessage(`Error: ${error.message}`);
       console.error('Error:', error.message);
     }
   };
@@ -88,7 +93,11 @@ const Appartement = () => {
           <div className="tab-content text-center">
             <div className="tab-pane active" id="rent">
               <div className="Rent_form find_form">
-                {message != '' && <p>{message}</p>}
+                {message !== '' && (
+                  <p className={`text-${messageType === 'success' ? 'success' : 'danger'}`}>
+                    {message}
+                  </p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="col-md-6 px-0">
