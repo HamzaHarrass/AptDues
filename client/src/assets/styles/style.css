@@ -915,16 +915,16 @@ section {
 		5. FIND SECTION
 -------------------------------------------------------------------*/
 /* find section */
-.find_section {
+.find_section1,.find_section {
   background-image: url(../images/find-bg.png);
   background-size: cover;
   background-position: center;
+  content: '\f2d0';
   background-repeat: no-repeat;
-  /* background-image: none; */
+  width: 100vw;
 }
-
 .find_section .form_tab_container ul {
-  padding: 0 30px;
+  padding: 0 30px!;
 }
 
 .find_section .form_tab_container ul .nav-link {
@@ -3299,9 +3299,8 @@ section {
     border-radius: 40vh 0 0 40vh;
     background-color: #5aa9e6 !important;
 }
-.centre{
-  margin-left: 10vw;
-}
+
 .centre-Nav{
-  margin-left: 10vw;
+  margin-left: 4vw;
+  margin-right: -8vw;
 }

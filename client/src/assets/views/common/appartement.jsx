@@ -35,7 +35,7 @@ function Appartement() {
   };
 
   return (
-    <section className="centre  find_section property_section layout_padding pr_mobile_20">
+    <section className="find_section1 property_section layout_padding pr_mobile_20">
       <div className="container-fluid max_width-1500">
         <div className="row background">
           <div className="col-lg-10 mx-auto">
