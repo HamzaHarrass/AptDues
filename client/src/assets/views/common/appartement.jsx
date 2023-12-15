@@ -18,10 +18,6 @@ function Appartement() {
   }, []);
 
   const getStatusColor = (status) => {
-    // if (status === 'occupied') {
-    //   return 'red';
-    // }
-
     switch (status) {
       case 'available':
         return 'text-success';
