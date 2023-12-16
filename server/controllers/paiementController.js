@@ -22,7 +22,7 @@ const getAllPaiements = async (req, res) => {
 
 const getPaiementById = async (req, res) => {
   try {
-    const paiement = await Paiement.findById(req.params.id).populate('appartement client');
+    const paiement = await Paiement.find({appartement:req.params.id}).populate('appartement client');
     if (!paiement) {
       return res.status(404).json({ error: 'Paiement not found' });
     }

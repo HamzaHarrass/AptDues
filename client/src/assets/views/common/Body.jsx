@@ -1,5 +1,3 @@
-import '../../styles/style.css'
-import '../../styles/bootstrap.min.css'
 import image from '../../images/slider-img.png'
 
 const body = () => {

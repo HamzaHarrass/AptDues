@@ -70,8 +70,7 @@ const Client = () => {
       <div className="container">
         <div className="heading_container">
           <h2>
-            Add <br />
-            client
+            Add client
           </h2>
         </div>
         <div className="form_tab_container">

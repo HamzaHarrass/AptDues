@@ -54,7 +54,10 @@
 
 html,
 body {
-  background: white;		
+  background-image: url('../images/find-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
   color: #000000;
   font-family: "Poppins", sans-serif;
   line-height: normal;
@@ -915,12 +918,7 @@ section {
 		5. FIND SECTION
 -------------------------------------------------------------------*/
 /* find section */
-.find_section1,.find_section {
-  background-image: url(../images/find-bg.png);
-  background-size: cover;
-  background-position: center;
-  content: '\f2d0';
-  background-repeat: no-repeat;
+.find_section1{ 
   width: 100vw;
 }
 .find_section .form_tab_container ul {
@@ -3293,7 +3291,7 @@ section {
 }
 .slider_section .row{
     height: 90vh;
-    width: 78.7vw;
+    width: 77.9vw;
     margin-left: 1.4vw;
     padding: 3em 0 3em 7em;
     border-radius: 40vh 0 0 40vh;

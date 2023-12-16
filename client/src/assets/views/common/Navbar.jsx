@@ -1,6 +1,4 @@
 import '../../styles/style.css'
-import '../../styles/bootstrap.min.css'
-import '../../styles/responsive.css'
 import logo from '../../images/logo-icon-black.png'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';

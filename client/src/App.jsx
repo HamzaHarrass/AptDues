@@ -3,7 +3,7 @@ import React from "react"
 import Index from "./components/index/index"
 import Auth from "./components/Auth/Auth"
 import Appartement from "./components/appartement/appartement"
-
+import Detail from "./components/detail/detail"
 import { BrowserRouter,Route, Routes } from "react-router-dom"
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         <Route path="/" element={<Index/>} />
         <Route path="/auth" element={<Auth/>} />
         <Route path="/appartement" element={<Appartement />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
       </BrowserRouter>
   </React.StrictMode>

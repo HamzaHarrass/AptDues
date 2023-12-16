@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/style.css';
 import '../../styles/bootstrap.min.css';
 import image from '../../images/p-3.png';
 import axios from 'axios';
 
 function Appartement() {
+  const navigate  = useNavigate();
   const [appartements, setAppartements] = useState([]);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function Appartement() {
                         <span className={`${getStatusColor(appartement.status)}`}>{appartement.status}</span>
                       </h6>
                       <a href="#">
-                        <span>Detail</span>
+                        <span onClick={() => navigate(`/detail/${appartement._id}`)}>Detail</span>
                       </a>
                     </div>
                   </div>
