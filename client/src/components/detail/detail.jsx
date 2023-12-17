@@ -42,9 +42,9 @@ const Detail = () => {
         console.error('Error fetching payments:', error.response.data);
       });
   }, [id]);
-  if (!paiements || paiements.length === 0) {
-    return <div>Loading...</div>;
-  }
+  // if (!paiements || paiements.length === 0) {
+  //   return <div>Loading...</div>;
+  // }
 
   const payment = paiements[0]; 
 
