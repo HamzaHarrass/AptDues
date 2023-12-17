@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; 
 import axios from 'axios';
 import '../../assets/styles/Detail.css'
-import Navbar from '../../assets/views/common/Navbar-apt.jsx'
+import Navbar from '../../assets/views/common/Navbar.jsx'
 
 
 class ErrorBoundary extends React.Component {
