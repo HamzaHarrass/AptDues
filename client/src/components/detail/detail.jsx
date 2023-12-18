@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../../assets/styles/Detail.css';
 import Navbar from '../../assets/views/common/Navbar.jsx';
+import jsPDF from 'jspdf';
 
 const ErrorBoundary = ({ children }) => {
   const [hasError, setHasError] = useState(false);
@@ -35,13 +36,50 @@ const Detail = () => {
       });
   }, [id]);
 
+  const downloadPDF = (payment) => {
+    if (!payment) {
+      console.error('Payment information is undefined.');
+      return;
+    }
 
+    const pdf = new jsPDF();
 
-  const payment = paiements[0];
+    pdf.setFontSize(16);
+    pdf.text('Facture', 20, 10);
+
+    pdf.setFontSize(12);
+    pdf.text('Invoice Number:' + payment.appartement._id, 20, 20);
+    pdf.text('Date: ' + new Date().toLocaleDateString(), 20, 30);
+
+    pdf.setLineWidth(0.5);
+    pdf.line(20, 40, 190, 40);
+    pdf.text('Address', 30, 50);
+    pdf.text('Nom complet', 100, 50);
+    pdf.text('Price', 140, 50);
+    pdf.line(20, 60, 190, 60);
+
+    const invoiceItems = [
+      { description: payment.appartement.address, nom: payment.client.nom, prenom: payment.client.prenom, Price: payment.appartement.prix },
+    ];
+
+    let yPos = 70;
+    invoiceItems.forEach((item, index) => {
+      pdf.text(item.description, 30, yPos);
+      pdf.text(item.nom + ' ' + item.prenom, 100, yPos);
+      pdf.text('$' + item.Price.toFixed(2), 140, yPos);
+      yPos += 10;
+    });
+
+    const total = invoiceItems.reduce((sum, item) => sum + item.Price, 0);
+
+    pdf.text('Total: $' + total.toFixed(2), 120, yPos + 10);
+
+    pdf.save(`invoice_${payment.appartement._id}.pdf`);
+  };
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <ErrorBoundary>
         <div className="table1">
           <h2>Historique</h2>
@@ -67,7 +105,9 @@ const Detail = () => {
                   <td>{payment.date}</td>
                   <td>{payment.appartement.status}</td>
                   <td>
-                    <button className="btn btn-info">Download</button>
+                    <button className="btn btn-info" onClick={() => downloadPDF(payment)}>
+                      Download
+                    </button>
                   </td>
                 </tr>
               ))}
