@@ -70,8 +70,7 @@ const Appartement = () => {
       <div className="container">
         <div className="heading_container">
           <h2>
-            Add <br />
-            Appartement
+            Add Appartement
           </h2>
         </div>
         <div className="form_tab_container">

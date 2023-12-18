@@ -11,7 +11,7 @@ const PaymentForm = () => {
   useEffect(() => {
     const fetchApartmentsAndClients = async () => {
       try {
-        const apartmentsResponse = await axios.get('http://localhost:3000/api/appartement_available');
+        const apartmentsResponse = await axios.get('http://localhost:3000/api/appartements');
         const clientsResponse = await axios.get('http://localhost:3000/api/clients');
         setApartments(apartmentsResponse.data);
         setClients(clientsResponse.data);
@@ -25,11 +25,11 @@ const PaymentForm = () => {
 
   const Payment = async () => {
     try {
-      const paymentResponse = await axios.post('http://localhost:3000/api/Paiements', {
-        apartmentId: selectedApartment,
-        clientId: selectedClient,
+      const paymentResponse = await axios.post('http://localhost:3000/api/paiements', {
+        appartement: selectedApartment,  
+        client: selectedClient,
       });
-      console.log("payment : ",paymentResponse);
+      console.log("payment : ", paymentResponse);
       console.log('Payment created:', paymentResponse.data);
     } catch (error) {
       console.error('Error creating payment:', error);
@@ -71,7 +71,7 @@ const PaymentForm = () => {
         </select>
       </label>
       <br />
-      <button className='btn btn-primary text-center w-25 m-auto' style={{minWidth:"300px"}} onClick={Payment}>Create Payment and Generate PDF</button>
+      <button className='btn btn-primary text-center w-25 m-auto' style={{minWidth:"300px"}} onClick={Payment}>Create</button>
       </div>
     </>
   );

@@ -34,7 +34,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href=""> Contact </a>
+              <a onClick={() => navigate("/paiement")} className="nav-link" href=""> Payment  </a>
             </li>
           </ul>
           <div className="user_option">

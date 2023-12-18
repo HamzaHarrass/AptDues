@@ -1,46 +1,21 @@
-const fs = require('fs');
-const PDFDocument = require('pdfkit');
-const path = require('path');  
+// const fs = require('fs');
+// const PDFDocument = require('pdfkit');
+// const path = require('path');  
 const Paiement = require('../models/Paiement');
-const Appartement = require('../models/Appartement');
-const Client = require('../models/Client');
+// const Appartement = require('../models/Appartement');
+// const Client = require('../models/Client');
 
 
 const createPaiement = async (req, res) => {
-  const { apartmentId, clientId } = req.body;
+  const { appartement, client } = req.body;
   try {
-    const newPaiement = new Paiement({ appartement: apartmentId, client: clientId });
-    await newPaiement.save();
-
-    const appartementDetails = await Appartement.findById(apartmentId);
-    const clientDetails = await Client.findById(clientId);
-
-    const pdfDir = path.join(__dirname, 'path', 'to', 'pdf');
-
-    if (!fs.existsSync(pdfDir)) {
-      fs.mkdirSync(pdfDir, { recursive: true });
-    }
-
-    const doc = new PDFDocument();
-    const pdfPath = path.join(pdfDir, `${newPaiement._id}.pdf`);
-    doc.pipe(fs.createWriteStream(pdfPath));
-
-    doc.text(`Payment Details:`);
-    doc.text(`\nApartment Address: ${appartementDetails.address}`);
-    doc.text(`Apartment Price: ${appartementDetails.prix}`);
-    doc.text(`Client Name: ${clientDetails.prenom} ${clientDetails.nom}`);
-    doc.text(`Client ID: ${clientDetails.cin}`);
-    doc.text(`Client Phone: ${clientDetails.telephone}`);
-    doc.text(`\nDate: ${newPaiement.date}`);
-
-    doc.end();
-
-    res.status(201).json(newPaiement);
+    const newPaiement = new Paiement({ appartement: appartement, client: client });
+    const savedPayment = await newPaiement.save();
+    res.status(201).json(savedPayment);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
-
 
 const getAllPaiements = async (req, res) => {
   try {
