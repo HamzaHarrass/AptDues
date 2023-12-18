@@ -29,3 +29,6 @@ body {
     padding: 2px;
     color:#5aa9e6;
   }
+  select{
+    color: black;
+  }

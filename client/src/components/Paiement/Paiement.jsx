@@ -1,5 +1,5 @@
-// PaymentForm.jsx
 import { useState, useEffect } from 'react';
+import Navbar from '../../assets/views/common/Navbar.jsx'
 import axios from 'axios';
 
 const PaymentForm = () => {
@@ -11,9 +11,8 @@ const PaymentForm = () => {
   useEffect(() => {
     const fetchApartmentsAndClients = async () => {
       try {
-        const apartmentsResponse = await axios.get('http://localhost:3000/api/apartments');
+        const apartmentsResponse = await axios.get('http://localhost:3000/api/appartement_available');
         const clientsResponse = await axios.get('http://localhost:3000/api/clients');
-
         setApartments(apartmentsResponse.data);
         setClients(clientsResponse.data);
       } catch (error) {
@@ -26,11 +25,11 @@ const PaymentForm = () => {
 
   const Payment = async () => {
     try {
-      const paymentResponse = await axios.post('http://localhost:3000/api/payments', {
+      const paymentResponse = await axios.post('http://localhost:3000/api/Paiements', {
         apartmentId: selectedApartment,
         clientId: selectedClient,
       });
-
+      console.log("payment : ",paymentResponse);
       console.log('Payment created:', paymentResponse.data);
     } catch (error) {
       console.error('Error creating payment:', error);
@@ -38,40 +37,43 @@ const PaymentForm = () => {
   };
 
   return (
-    <div>
-      <h2>Payment Form</h2>
-      <label>
+    <>
+    <Navbar></Navbar>
+      <h2 className='mb-5 mt-5'>Payment Form</h2>
+      <div className= 'd-flex flex-column '>
+      <label className='text-center w-25 m-auto' style={{minWidth:"300px"}}>
         Select Apartment:
-        <select
+        <select  className="form-control "
           value={selectedApartment}
           onChange={(e) => setSelectedApartment(e.target.value)}
         >
-          <option value="">Select an apartment</option>
+          <option className='text-center' value="">Select an apartment</option>
           {apartments.map((apartment) => (
             <option key={apartment._id} value={apartment._id}>
-              {apartment.name}
+              {apartment.address}
             </option>
           ))}
         </select>
       </label>
       <br />
-      <label>
+      <label className='text-center w-25 m-auto' style={{minWidth:"300px"}}>
         Select Client:
-        <select
+        <select  className="form-control"
           value={selectedClient}
           onChange={(e) => setSelectedClient(e.target.value)}
         >
-          <option value="">Select a client</option>
+          <option className='text-center' value="">Select a client</option>
           {clients.map((client) => (
             <option key={client._id} value={client._id}>
-              {client.name}
+              {client.nom+" "+client.prenom}
             </option>
           ))}
         </select>
       </label>
       <br />
-      <button onClick={Payment}>Create Payment and Generate PDF</button>
-    </div>
+      <button className='btn btn-primary text-center w-25 m-auto' style={{minWidth:"300px"}} onClick={Payment}>Create Payment and Generate PDF</button>
+      </div>
+    </>
   );
 };
 

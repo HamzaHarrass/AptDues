@@ -18,7 +18,16 @@ const getAllAppartements = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const AppartementsAvailable = async (req, res) => {
+  try {
+    // Assuming your status field is called 'status' and you want only available apartments
+    const appartements = await Appartement.find({ status: 'available' });
 
+    res.json(appartements);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 const getAppartementById = async (req, res) => {
   try {
     const appartement = await Appartement.findById(req.params.id);
@@ -59,4 +68,4 @@ const deleteAppartement = async (req, res) => {
   }
 };
 
-module.exports = {  updateAppartement , deleteAppartement , getAppartementById , getAllAppartements , createAppartement};
+module.exports = {  updateAppartement , deleteAppartement , getAppartementById , getAllAppartements , createAppartement , AppartementsAvailable};

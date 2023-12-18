@@ -1,9 +1,17 @@
+// const fs = require('fs');
+// const PDFDocument = require('pdfkit');
 const Paiement = require('../models/Paiement');
 
 const createPaiement = async (req, res) => {
+  const {apartmentId, clientId} = req.body;
   try {
-    const newPaiement = new Paiement(req.body);
+    const newPaiement = new Paiement({appartement : apartmentId, client: clientId});
+    console.log(newPaiement);
     await newPaiement.save();
+    // const doc = new PDFDocument();
+    // doc.pipe(fs.createWriteStream(`path/to/pdf/${newPaiement._id}.pdf`));
+    // doc.text(`Payment Details:\n\nApartment ID: ${newPaiement.appartement}\nClient ID: ${newPaiement.client}\nDate: ${newPaiement.date}`);
+    // doc.end();
     res.status(201).json(newPaiement);
   } catch (error) {
     res.status(400).json({ error: error.message });
