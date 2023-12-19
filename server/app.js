@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 require('dotenv').config();
 
 app.use(cors({
-    origin : "http://localhost:5173"
+    origin : "http://localhost:5170"
 }))
 app.get('/',(req,res)=>{
     res.status(200).json({message:"ALL IS GOOD"})

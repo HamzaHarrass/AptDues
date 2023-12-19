@@ -36,8 +36,6 @@ const Auth = () => {
       password,
     };
 
-    console.log(user);
-
     axios
       .post('http://localhost:3000/auth/login', user)
       .then((response) => {
@@ -55,7 +53,7 @@ const Auth = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <div className="form">
         <div className="form__box">
           <div className="form__left">
@@ -67,8 +65,14 @@ const Auth = () => {
               />
             </div>
           </div>
+          
           <div className="form__right">
             <div className="form__padding-right">
+            {loginError && (
+                <div className="form__error">
+                  {loginError}
+                </div>
+              )}
               <form>
                 <h1 className="form__title">Member Login</h1>
                 <input
@@ -95,21 +99,11 @@ const Auth = () => {
                 />
               </form>
               <span>
-                Forgot
+                Welcome To{' '}
                 <a className="form__link" href="#">
-                  Username
-                </a>
-                <a>/</a>
-                <a className="form__link" href="#">
-                  Password
+                  Apt<span className="Dues">Dues</span>
                 </a>
               </span>
-              <p>
-                {' '}
-                <a className="form__link" href="#">
-                  Create your account
-                </a>
-              </p>
             </div>
           </div>
         </div>
