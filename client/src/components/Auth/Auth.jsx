@@ -36,11 +36,11 @@ const Auth = () => {
       password,
     };
 
-	console.log(user);
+    console.log(user);
 
     axios
-	.post('http://localhost:3000/auth/login', user)
-	.then((response) => {
+      .post('http://localhost:3000/auth/login', user)
+      .then((response) => {
         console.log(response);
         console.log('Login successful');
         localStorage.setItem('user', JSON.stringify(response.data.user));
@@ -56,52 +56,61 @@ const Auth = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="container-auth">
-        <div className="screen">
-          <div className="screen__content">
-            <form className="login" onSubmit={(e) => e.preventDefault()}>
-              <div className="login__field">
-                <i className="login__icon fas fa-user"></i>
+      <div className="form">
+        <div className="form__box">
+          <div className="form__left">
+            <div className="form__padding">
+              <img
+                className="form__image"
+                src="https://i.pinimg.com/originals/8b/44/51/8b4451665d6b2139e29f29b51ffb1829.png"
+                alt="Logo"
+              />
+            </div>
+          </div>
+          <div className="form__right">
+            <div className="form__padding-right">
+              <form>
+                <h1 className="form__title">Member Login</h1>
                 <input
+                  className="form__email"
                   type="text"
-                  className="login__input"
-                  placeholder="User name / Email"
+                  placeholder="Email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                 />
-              </div>
-              <div className="login__field">
-                <i className="login__icon fas fa-lock"></i>
                 <input
+                  className="form__password"
                   type="password"
-                  className="login__input"
-                  placeholder="Password"
+                  placeholder="******"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                 />
-              </div>
-              <button className="button login__submit" onClick={login}>
-                <span className="button__text">Log In Now</span>
-                <i className="button__icon fas fa-chevron-right"></i>
-              </button>
-            </form>
-            {loginError && <div className="error-message">{loginError}</div>}
-            <div className="social-login">
-              <h3>log in via</h3>
-              <div className="social-icons">
-                <a href="#" className="social-login__icon fab fa-instagram"></a>
-                <a href="#" className="social-login__icon fab fa-facebook"></a>
-                <a href="#" className="social-login__icon fab fa-twitter"></a>
-              </div>
+                <input
+                  className="form__submit-btn"
+                  type="button"
+                  value="Login"
+                  onClick={login}
+                />
+              </form>
+              <span>
+                Forgot
+                <a className="form__link" href="#">
+                  Username
+                </a>
+                <a>/</a>
+                <a className="form__link" href="#">
+                  Password
+                </a>
+              </span>
+              <p>
+                {' '}
+                <a className="form__link" href="#">
+                  Create your account
+                </a>
+              </p>
             </div>
-          </div>
-          <div className="screen__background">
-            <span className="screen__background__shape screen__background__shape4"></span>
-            <span className="screen__background__shape screen__background__shape3"></span>
-            <span className="screen__background__shape screen__background__shape2"></span>
-            <span className="screen__background__shape screen__background__shape1"></span>
           </div>
         </div>
       </div>
