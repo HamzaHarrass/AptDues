@@ -3,7 +3,6 @@ const Paiement = require('../models/Paiement');
 const createPaiement = async (req, res) => {
   const { appartement, client } = req.body;
   try {
-    appartement.status = 'occupied';
     const newPaiement = new Paiement({ appartement: appartement, client: client });
     const savedPayment = await newPaiement.save();
     res.status(201).json(savedPayment);
