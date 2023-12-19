@@ -36,9 +36,6 @@ const Navbar = () => {
             <li className="nav-item">
               <a onClick={() => navigate("/paiement")} className="nav-link" href=""> Payment  </a>
             </li>
-            <li className="nav-item">
-              <a onClick={() => navigate("/controller")} className="nav-link" href=""> Controller  </a>
-            </li>
           </ul>
           <div className="user_option">
             <a href="" className="user_login_link">
