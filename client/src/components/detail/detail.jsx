@@ -88,6 +88,7 @@ const Detail = () => {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Address</th>
+                <th scope="col">Room</th>
                 <th scope="col">Client</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Date</th>
@@ -100,6 +101,7 @@ const Detail = () => {
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>{payment.appartement.address}</td>
+                  <td>{payment.appartement.room}</td>
                   <td>{`${payment.client.nom} ${payment.client.prenom}`}</td>
                   <td>{payment.appartement.prix}</td>
                   <td>{payment.date}</td>
