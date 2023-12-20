@@ -24,19 +24,6 @@ function Appartement() {
       });
   }, []);
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'available':
-        return 'text-success';
-      case 'under maintenance':
-        return 'text-warning';
-      case 'occupied':
-        return 'text-danger';
-      default:
-        return 'text-black';
-    }
-  };
-
   const SaveChanges = () => {
     axios.put(`http://localhost:3000/api/appartements/${selectedAppartement._id}`, {
       address: document.getElementById('address').value,
@@ -77,7 +64,7 @@ function Appartement() {
             <div className="row">
               {appartements.map((appartement, index) => (
                 <div key={appartement._id} className="col-md-4 col-sm-6">
-                  <div className="box" style={{ border: `2px solid ${getStatusColor(appartement.status)}` }}>
+                  <div className="box" style={{ border: `2px solid` }}>
                     <div className="number_box">
                       <h5>{index + 1}</h5>
                     </div>
@@ -92,7 +79,6 @@ function Appartement() {
                           </g>
                         </svg>
                         <span>{appartement.address} -</span>
-                        <span className={`${getStatusColor(appartement.status)}`}>{appartement.status}</span>
                       </h6>
                       <img onClick={() => navigate(`/detail/${appartement._id}`)} src={view} alt="" />
                       <img src={pen} alt="" onClick={() => setSelectedAppartement(appartement)} />

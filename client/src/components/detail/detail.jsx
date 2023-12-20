@@ -92,7 +92,6 @@ const Detail = () => {
                 <th scope="col">Client</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Date</th>
-                <th scope="col">Status</th>
                 <th scope="col">Facture</th>
               </tr>
             </thead>
@@ -105,7 +104,6 @@ const Detail = () => {
                   <td>{`${payment.client.nom} ${payment.client.prenom}`}</td>
                   <td>{payment.appartement.prix}</td>
                   <td>{payment.date}</td>
-                  <td>{payment.appartement.status}</td>
                   <td>
                     <button className="btn btn-info" onClick={() => downloadPDF(payment)}>
                       Download

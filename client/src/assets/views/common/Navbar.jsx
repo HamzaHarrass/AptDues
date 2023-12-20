@@ -37,7 +37,7 @@ const Navbar = () => {
               <a onClick={() => navigate("/paiement")} className="nav-link" href=""> Payment  </a>
             </li>
           </ul>
-          <div className="user_option">
+          <div onClick={() => navigate("/auth")} className="user_option">
             <a href="" className="user_login_link">
               <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518.95 441.44">
                 <title>user-icon</title>

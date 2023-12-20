@@ -29,6 +29,8 @@ const PaymentForm = () => {
         appartement: selectedApartment,  
         client: selectedClient,
       });
+      setSelectedApartment('');
+      setSelectedClient('');
       console.log("payment : ", paymentResponse);
       console.log('Payment created:', paymentResponse.data);
     } catch (error) {
