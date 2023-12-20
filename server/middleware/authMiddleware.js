@@ -1,26 +1,22 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/Users');
+// middleware/authMiddleware.js
+const jwt = require("jsonwebtoken");
 
-const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token; 
-
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, 'AZERTYUIO123456789'); 
-      const user = await User.findOne({ _id: decoded.userId });
-
-      if (!user) {
-        return res.status(401).json({ message: 'Unauthorized' });
-      }
-
-      req.user = user; 
-      next(); 
-    } catch (error) {
-      res.status(401).json({ message: 'Unauthorized' }); 
-    }
-  } else {
-    res.status(401).json({ message: 'Unauthorized' });
+async function isAuthenticated(req, res, next) {
+  const accessToken = req.cookies["access_token"];
+console.log(accessToken);
+  if (!accessToken) {
+    return res.status(401).json({ message: "Unauthorized: Missing access token" });
   }
-};
 
-module.exports = authMiddleware;
+  try {
+    const user = jwt.verify(accessToken, process.env.JWT_SECRET || 'default_secret');
+    req.user = user;
+    return next();
+  } catch (error) {
+    return res.status(401).json({ message: "Unauthorized: Invalid access token" });
+  }
+}
+
+module.exports = {
+  isAuthenticated,
+};

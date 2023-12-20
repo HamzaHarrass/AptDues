@@ -1,6 +1,5 @@
 const express = require('express');
-const authMiddleware = require('../middleware/authMiddleware'); 
-
+const { isAuthenticated } = require('../middleware/authMiddleware');
 const {
   createPaiement,
   getAllPaiements,
@@ -10,10 +9,10 @@ const {
 } = require('../controllers/paiementController');
 const router = express.Router();
 
-router.post('/Paiements', createPaiement,authMiddleware);
-router.get('/Paiements', getAllPaiements,authMiddleware);
-router.get('/Paiements/:id', getPaiementById,authMiddleware);
-router.put('/Paiements/:id', updatePaiement,authMiddleware);
-router.delete('/Paiements/:id', deletePaiement,authMiddleware);
+router.post('/Paiements', createPaiement, isAuthenticated);
+router.get('/Paiements', getAllPaiements , isAuthenticated);
+router.get('/Paiements/:id', getPaiementById);
+router.put('/Paiements/:id', updatePaiement);
+router.delete('/Paiements/:id', deletePaiement);
 
 module.exports = router;

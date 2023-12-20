@@ -1,19 +1,19 @@
 const express = require('express');
 const { AppartementsAvailable , updateAppartement,deleteAppartement , getAppartementById , getAllAppartements , createAppartement}  = require('../controllers/appartementControle');
-const authMiddleware = require('../middleware/authMiddleware'); 
+const { isAuthenticated } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.post('/appartements', createAppartement,authMiddleware);
+router.post('/appartements', createAppartement , isAuthenticated);
 
-router.get('/appartements', getAllAppartements,authMiddleware);
+router.get('/appartements', getAllAppartements);
 
-router.get('/appartement_available', AppartementsAvailable,authMiddleware);
+router.get('/appartement_available', AppartementsAvailable);
 
-router.get('/appartements/:id', getAppartementById,authMiddleware);
+router.get('/appartements/:id', getAppartementById);
 
-router.put('/appartements/:id', updateAppartement,authMiddleware);
+router.put('/appartements/:id', updateAppartement);
 
-router.delete('/appartements/:id', deleteAppartement,authMiddleware);
+router.delete('/appartements/:id', deleteAppartement);
 
 
 module.exports = router

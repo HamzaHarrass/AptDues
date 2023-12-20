@@ -1,5 +1,5 @@
 const express = require("express");
-require("./config/DBconnection")()
+require("./config/DBconnection")();
 const cookieParser = require('cookie-parser');
 const app = express();
 const authRouter = require("./routes/authRouter");
@@ -15,19 +15,20 @@ app.use(express.urlencoded({ extended: false }));
 require('dotenv').config();
 
 app.use(cors({
-    origin : "http://localhost:5170"
-}))
-app.get('/',(req,res)=>{
-    res.status(200).json({message:"ALL IS GOOD"})
-})
-app.use("/auth",authRouter);
+    origin: "http://localhost:5170"
+}));
 
+app.get('/', (req, res) => {
+    res.status(200).json({ message: "ALL IS GOOD" })
+});
+
+// prefix | suffix
+app.use("/auth", authRouter);
 app.use('/api', appartementRoutes);
 app.use('/api', clientRouter);
 app.use('/api', paiementRouter);
 
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
